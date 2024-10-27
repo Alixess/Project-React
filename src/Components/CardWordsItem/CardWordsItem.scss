@@ -1,0 +1,9 @@
+.card {
+  display: flex;
+  border: white 2px solid;
+  margin: 20px;
+
+  &-body {
+    padding: 0 30px;
+  }
+}
