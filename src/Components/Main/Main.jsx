@@ -1,10 +1,10 @@
 import React from "react";
-import CardWord from "../CardWord/CardWord";
+import List from "../List/List";
 
 export default function Main() {
   return (
     <div>
-      <CardWord />
+      <List />
     </div>
   );
 }
