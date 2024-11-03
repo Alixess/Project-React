@@ -1,9 +1,12 @@
 import React from "react";
-import style from "./WordList.module.scss";
+//import { ReactComponent as Edit } from "../../assets/svg/edit.svg";
+//import ButtonEdit from "../ButtonEdit/ButtonEdit";
+import style from "./wordList.module.scss";
 
 export default function WordList(props) {
-  const { english, transcription, russian, tags } = props;
-
+  const { english, transcription, russian, tags, handleClick, wordsId, id } =
+    props;
+  const editWordId = wordsId === id;
   return (
     <div className={style.card}>
       <div className={style.card_body}>
@@ -17,6 +20,18 @@ export default function WordList(props) {
       </div>
       <div className={style.card_body}>
         <p className={style.card_text}>{tags}</p>
+      </div>
+      <div>
+        <button>
+          <img
+            src="../../assets/svg/edit.svg"
+            alt="edit"
+            onClick={() => handleClick(id)}
+          />
+        </button>
+        <button>
+          <img src="../../assets/svg/delete.svg" alt="delete" />
+        </button>
       </div>
     </div>
   );

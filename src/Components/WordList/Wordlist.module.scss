@@ -1,11 +1,11 @@
-@import "../../style/variables.scss";
-@import "../../style/mixins.scss";
+@import "../../style/_variables.scss";
+@import "../../style/_mixins.scss";
 
 .card {
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 20% 20% 20% 20% 20%;
   justify-content: center;
-  border: rgb(210, 208, 208) 2px solid;
+  border: $main-fontcolor 2px solid;
   border-radius: 8px;
   margin: 20px;
 

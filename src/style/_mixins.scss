@@ -1,0 +1,49 @@
+@mixin input {
+  margin: 0.8em 0;
+  height: 40px;
+  padding-left: 1em;
+  border: solid 1px rgb(210, 208, 208);
+  border-radius: 8px;
+  background-color: #242424;
+  cursor: pointer;
+  transition: border-color 0.25s;
+
+  &:focus,
+  :focus-visible {
+    border: 2px solid #713bc1;
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+
+  &:hover {
+    background-color: rgb(210, 208, 208);
+  }
+}
+
+@mixin main-text($font-size, $font-weight: 400) {
+  font-family: $main-font;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  text-align: justify;
+  line-height: 150%;
+}
+
+@mixin button {
+  min-width: 100px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  &:hover {
+    border-color: #646cff;
+  }
+  &:focus,
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px #cbd6ee;
+  }
+}

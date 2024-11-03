@@ -1,0 +1,27 @@
+@import "../../style/_variables.scss";
+@import "../../style/_mixins.scss";
+
+.wordbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  min-height: 250px;
+  margin: auto;
+  padding: 1em;
+  background: #fff;
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.word {
+  @include main-text(1.3em, 700);
+  color: $alt-textcolor;
+}
+
+.transcription {
+  font-weight: 400;
+  color: $alt-textcolor;
+}
