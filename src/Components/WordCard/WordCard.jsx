@@ -3,6 +3,11 @@ import ButtonTranslate from "../ButtonTranslate/ButtonTranslate";
 import style from "./wordcard.module.scss";
 
 export default function WordCard(props) {
+  const [pressed, setPressed] = React.useState(props.pressed || false);
+  function handleClick() {
+    setPressed(!pressed);
+  }
+
   return (
     <div className={style.wordbox}>
       <h3 className={style.word}>book{props.english}</h3>
@@ -13,7 +18,7 @@ export default function WordCard(props) {
       <ButtonTranslate
         translate={props.russian}
         pressed={props.pressed}
-        setPressed={props.setPressed}
+        handleClick={handleClick}
       />
     </div>
   );

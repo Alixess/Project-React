@@ -1,19 +1,13 @@
 import React, { useState } from "react";
 import style from "./buttontranslate.module.scss";
 
-export default function ButtonTranslate(props) {
-  const handleClick = () => {
-    props.setPressed(!props.pressed);
-  };
-
+export default function ButtonTranslate({ handleClick, translate, pressed }) {
   return (
-    <div className={style.button}>
-      {props.pressed ? (
-        <span className={style.translate}>{props.translate}</span>
+    <div onClick={handleClick} className={style.button}>
+      {pressed ? (
+        <span className={style.translate}>книга{translate}</span>
       ) : (
-        <button className={style.button} onClick={handleClick}>
-          Показать перевод
-        </button>
+        <button className={style.button}>Показать перевод</button>
       )}
     </div>
   );
