@@ -17,7 +17,7 @@ export default function WordCard(props) {
       </h3>
       <ButtonTranslate
         translate={props.russian}
-        pressed={props.pressed}
+        pressed={pressed}
         handleClick={handleClick}
       />
     </div>
