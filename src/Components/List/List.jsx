@@ -5,11 +5,12 @@ import WordList from "../WordList/WordList";
 import style from "./list.module.scss";
 
 export default function List() {
-  const [wordsId, setWordsId] = useState(false);
+  const [selectWordsId, setSelectWordsId] = useState(false);
 
   function handleClick(id) {
-    setWordsId(id);
+    setSelectWordsId(id);
   }
+
   return (
     <div className={style.cardholder}>
       <p> Добавить новое слово</p>
@@ -25,7 +26,7 @@ export default function List() {
         <WordList
           key={index}
           {...item}
-          wordsId={wordsId}
+          selectWordsId={selectWordsId}
           handleClick={handleClick}
         />
       ))}

@@ -1,12 +1,22 @@
 import React from "react";
-//import { ReactComponent as Edit } from "../../assets/svg/edit.svg";
-//import ButtonEdit from "../ButtonEdit/ButtonEdit";
+import editSvg from "../../assets/svg/edit.svg";
+import deleteSvg from "../../assets/svg/delete.svg";
+
 import style from "./wordList.module.scss";
 
 export default function WordList(props) {
-  const { english, transcription, russian, tags, handleClick, wordsId, id } =
-    props;
-  const editWordId = wordsId === id;
+  const {
+    english,
+    transcription,
+    russian,
+    tags,
+    handleClick,
+    selectWordsId,
+    id,
+  } = props;
+  const editWordId = selectWordsId === id;
+  const deleteWordId = selectWordsId === id;
+
   return (
     <div className={style.card}>
       <div className={style.card_body}>
@@ -22,15 +32,11 @@ export default function WordList(props) {
         <p className={style.card_text}>{tags}</p>
       </div>
       <div>
-        <button>
-          <img
-            src="../../assets/svg/edit.svg"
-            alt="edit"
-            onClick={() => handleClick(id)}
-          />
+        <button onClick={() => handleClick(id)}>
+          <img src={editSvg} alt="edit" />
         </button>
         <button>
-          <img src="../../assets/svg/delete.svg" alt="delete" />
+          <img src={deleteSvg} alt="delete" />
         </button>
       </div>
     </div>

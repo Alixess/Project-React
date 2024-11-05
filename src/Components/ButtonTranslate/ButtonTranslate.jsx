@@ -14,14 +14,6 @@ export default function ButtonTranslate({ handleClick, translate, pressed }) {
 }
 
 /*<div onClick={handleClick} className={style.button}>
-      {pressed ? (
-        <span className={style.translate}>книга{translate}</span>
-      ) : (
-        <button className={style.button}>Показать перевод</button>
-      )}
-    </div>*/
-
-/*<div onClick={handleClick} className={style.button}>
       {pressed && <span className={style.translate}>книга{translate}</span>}
       {!pressed && <button className={style.button}>Показать перевод</button>}
     </div>*/
