@@ -15,22 +15,60 @@ export default function WordList(props) {
     id,
   } = props;
   const editWordId = selectWordsId === id;
-  const deleteWordId = selectWordsId === id;
+  //const deleteWordId = selectWordsId === id;
+
+  const editableWord = () => {
+    return (
+      <div className={style.card_inner}>
+        <div className={style.card_body}>
+          <input
+            className={style.card_text}
+            placeholder="Введите слово"
+            defaultValue={english}></input>
+        </div>
+        <div className={style.card_body}>
+          <input
+            className={style.card_text}
+            placeholder="Введите транскрипцию"
+            defaultValue={transcription}></input>
+        </div>
+        <div className={style.card_body}>
+          <input
+            className={style.card_text}
+            placeholder="Введите перевод"
+            defaultValue={russian}></input>
+        </div>
+        <div className={style.card_body}>
+          <input
+            className={style.card_text}
+            placeholder="Введите категорию"
+            defaultValue={tags}></input>
+        </div>
+      </div>
+    );
+  };
+  const initiallyWord = () => {
+    return (
+      <div className={style.card_inner}>
+        <div className={style.card_body}>
+          <p className={style.card_text}>{english}</p>
+        </div>
+        <div className={style.card_body}>
+          <p className={style.card_text}>{transcription}</p>
+        </div>
+        <div className={style.card_body}>
+          <p className={style.card_text}>{russian}</p>
+        </div>
+        <div className={style.card_body}>
+          <p className={style.card_text}>{tags}</p>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className={style.card}>
-      <div className={style.card_body}>
-        <p className={style.card_text}>{english}</p>
-      </div>
-      <div className={style.card_body}>
-        <p className={style.card_text}>{transcription}</p>
-      </div>
-      <div className={style.card_body}>
-        <p className={style.card_text}>{russian}</p>
-      </div>
-      <div className={style.card_body}>
-        <p className={style.card_text}>{tags}</p>
-      </div>
+      {!editWordId ? initiallyWord() : editableWord()}
       <div>
         <button onClick={() => handleClick(id)}>
           <img src={editSvg} alt="edit" />

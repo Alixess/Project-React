@@ -3,11 +3,17 @@
 
 .card {
   display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-columns: 80% 20%;
   justify-content: center;
   border: $main-fontcolor 2px solid;
   border-radius: 8px;
   margin: 20px;
+
+  &_inner {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    justify-content: center;
+  }
 
   &_body {
     padding: 0 30px;
