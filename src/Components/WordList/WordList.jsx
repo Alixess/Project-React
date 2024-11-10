@@ -68,12 +68,12 @@ export default function WordList(props) {
 
   return (
     <div className={style.card}>
-      {!editWordId ? initiallyWord() : editableWord()}
-      <div>
-        <button onClick={() => handleClick(id)}>
+      {editWordId ? editableWord() : initiallyWord()}
+      <div className={style.card_button}>
+        <button className={style.button} onClick={() => handleClick(id)}>
           <img src={editSvg} alt="edit" />
         </button>
-        <button>
+        <button className={style.button}>
           <img src={deleteSvg} alt="delete" />
         </button>
       </div>

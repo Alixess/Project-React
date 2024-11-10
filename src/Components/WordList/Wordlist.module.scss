@@ -16,6 +16,31 @@
   }
 
   &_body {
+    display: flex;
+    justify-content: start;
+    padding-left: 1em;
     padding: 0 30px;
+    text-align: left;
   }
+
+  &_button {
+    display: flex;
+    justify-content: center;
+  }
+}
+.button {
+  padding: 0;
+  margin: auto;
+  min-width: 40px;
+  width: 20%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+input {
+  @include input;
+  font-size: 16px;
 }
