@@ -1,6 +1,5 @@
-import React from "react";
-import { useState } from "react";
-import words from "../../data/words.json";
+import React, { useState } from "react";
+import data from "../../data/data.json";
 import WordList from "../WordList/WordList";
 import style from "./list.module.scss";
 
@@ -22,7 +21,7 @@ export default function List() {
         <button>Сохранить</button>
         <button>Отмена</button>
       </div>
-      {words.map((item, index) => (
+      {data.map((item, index) => (
         <WordList
           key={index}
           {...item}
