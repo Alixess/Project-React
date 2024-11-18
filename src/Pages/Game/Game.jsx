@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import WordCard from "../../Components/WordCard/WordCard";
 import style from "./game.module.scss";

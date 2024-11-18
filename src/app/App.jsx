@@ -8,6 +8,7 @@ import dataJSON from "../data/data.json";
 
 function App() {
   const [data, setData] = useState(dataJSON);
+
   return (
     <>
       <header>
@@ -15,7 +16,7 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route
             path="/game"
             element={<Game SetData={setData} data={data} />}

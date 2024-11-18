@@ -1,15 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../../assets/img/logo.png";
 import style from "./header.module.scss";
 
 export default function Header() {
   return (
     <header>
-      <div className="logotip">
-        <h1>Learn language</h1>
+      <div className={style.logotip}>
+        <NavLink to="/">
+          <img src={logo} alt="logotip" />
+        </NavLink>
       </div>
       <nav>
-        <NavLink to="/">Home</NavLink>
         <NavLink to="/game">Game</NavLink>
         <NavLink to="/table">Table</NavLink>
       </nav>
