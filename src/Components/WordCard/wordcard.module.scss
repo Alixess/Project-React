@@ -5,15 +5,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
   justify-content: center;
-  width: 80%;
-  min-height: 250px;
+  min-height: 320px;
+  min-width: 320px;
   margin: auto;
   padding: 1em;
-  background: #fff;
-  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+  background: $card-color;
+  box-shadow: 0 0 10px 5px $card-color;
   border-radius: 16px;
-  cursor: pointer;
 }
 
 .word {

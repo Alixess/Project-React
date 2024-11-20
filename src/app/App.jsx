@@ -3,7 +3,7 @@ import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 import { Home, Game, Error, Table } from "../Pages";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import dataJSON from "../data/data.json";
 
 function App() {

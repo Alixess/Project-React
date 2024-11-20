@@ -3,10 +3,14 @@
 
 .translate {
   @include main-text(1.2em);
+  @include button;
+  background-color: $button-color;
   color: $main-fontcolor;
   font-size: 1.3em;
 }
 
 .button {
   @include button;
+  font-size: 1.3em;
+  background-color: $button-color;
 }

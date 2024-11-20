@@ -3,7 +3,7 @@ import style from "./buttontranslate.module.scss";
 
 export default function ButtonTranslate({ handleClick, translate, pressed }) {
   return (
-    <div onClick={handleClick} className={style.button}>
+    <div onClick={handleClick}>
       {pressed ? (
         <span className={style.translate}>{translate}</span>
       ) : (
@@ -12,8 +12,3 @@ export default function ButtonTranslate({ handleClick, translate, pressed }) {
     </div>
   );
 }
-
-/*<div onClick={handleClick} className={style.button}>
-      {pressed && <span className={style.translate}>книга{translate}</span>}
-      {!pressed && <button className={style.button}>Показать перевод</button>}
-    </div>*/

@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ButtonTranslate from "../ButtonTranslate/ButtonTranslate";
 import style from "./wordcard.module.scss";
 
 export default function WordCard(props) {
-  const [pressed, setPressed] = React.useState(false);
+  const [pressed, setPressed] = useState(false);
 
   function handleClick() {
     setPressed(!pressed);
   }
+
   useEffect(() => setPressed(false), [props.id]);
 
   return (

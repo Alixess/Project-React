@@ -5,7 +5,7 @@ import style from "./header.module.scss";
 
 export default function Header() {
   return (
-    <header>
+    <div className={style.header}>
       <div className={style.logotip}>
         <NavLink to="/">
           <img src={logo} alt="logotip" />
@@ -15,6 +15,6 @@ export default function Header() {
         <NavLink to="/game">Game</NavLink>
         <NavLink to="/table">Table</NavLink>
       </nav>
-    </header>
+    </div>
   );
 }
