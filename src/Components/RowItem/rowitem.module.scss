@@ -1,0 +1,43 @@
+@import "../../style/_variables.scss";
+@import "../../style/_mixins.scss";
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+
+  .wrapper_contant {
+    display: flex;
+    border: $main-fontcolor 2px solid;
+    border-radius: 8px;
+  }
+  .contant {
+    max-width: 850px;
+    display: flex;
+    flex-grow: 1;
+    div {
+      flex: 1;
+      padding: 20px;
+    }
+  }
+  .editer {
+    max-width: 850px;
+    flex-grow: 1;
+    display: flex;
+    input {
+      flex: 1;
+      padding-left: 10px;
+    }
+  }
+}
+
+.wrapper_button {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+  div {
+    display: flex;
+    column-gap: 10px;
+  }
+}

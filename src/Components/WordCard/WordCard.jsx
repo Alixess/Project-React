@@ -1,25 +1,37 @@
-import React from "react";
-import ButtonTranslate from "../ButtonTranslate/ButtonTranslate";
+import React, { useState, useEffect } from "react";
 import style from "./wordcard.module.scss";
 
-export default function WordCard(props) {
-  const [pressed, setPressed] = React.useState(props.pressed || false);
+export default function WordCard({
+  id,
+  english,
+  transcription,
+  russian,
+  editCounter,
+}) {
+  const [showTranslation, setShowTranslation] = useState(false);
+
+  useEffect(() => {
+    if (showTranslation) {
+      setShowTranslation(false);
+    }
+  }, [id]);
+
   function handleClick() {
-    setPressed(!pressed);
+    setShowTranslation(true);
+    editCounter();
   }
 
   return (
-    <div className={style.wordbox}>
-      <h3 className={style.word}>book{props.english}</h3>
-      <h3 className={style.transcription}>
-        bʊk
-        {props.transcription}
-      </h3>
-      <ButtonTranslate
-        translate={props.russian}
-        pressed={pressed}
-        handleClick={handleClick}
-      />
+    <div className={style.wordbox} key={id}>
+      <h3 className={style.word}>{english}</h3>
+      <p className={style.transcription}>{transcription}</p>
+      <div>
+        {showTranslation ? (
+          <p className={style.word}>{russian}</p>
+        ) : (
+          <button onClick={handleClick}>Показать перевод</button>
+        )}
+      </div>
     </div>
   );
 }

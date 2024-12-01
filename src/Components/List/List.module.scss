@@ -1,9 +1,0 @@
-@import "../../style/_variables.scss";
-@import "../../style/_mixins.scss";
-.cardholder {
-  display: block;
-  max-width: 100%;
-}
-.input {
-  @include input;
-}

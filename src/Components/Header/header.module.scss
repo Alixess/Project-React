@@ -1,0 +1,28 @@
+@import "../../style/_variables.scss";
+@import "../../style/_mixins.scss";
+.header {
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  flex-basis: 20%;
+
+  img {
+    max-width: 150px;
+    height: auto;
+  }
+  nav {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+
+    a {
+      font-size: 1.25rem;
+      color: $main-textcolor;
+      &:hover {
+        color: $decor-color;
+        transition: 0.3s ease-out;
+      }
+    }
+  }
+}
