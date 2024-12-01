@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import style from "./wordcard.module.scss";
 
 export default function WordCard({
@@ -9,12 +9,17 @@ export default function WordCard({
   editCounter,
 }) {
   const [showTranslation, setShowTranslation] = useState(false);
+  const buttonRef = useRef(null);
 
   useEffect(() => {
     if (showTranslation) {
       setShowTranslation(false);
     }
   }, [id]);
+
+  useEffect(() => {
+    buttonRef.current.focus();
+  });
 
   function handleClick() {
     setShowTranslation(true);
@@ -29,7 +34,9 @@ export default function WordCard({
         {showTranslation ? (
           <p className={style.word}>{russian}</p>
         ) : (
-          <button onClick={handleClick}>Показать перевод</button>
+          <button onClick={handleClick} ref={buttonRef}>
+            Показать перевод
+          </button>
         )}
       </div>
     </div>

@@ -9,6 +9,8 @@ import dataJSON from "../data/data.json";
 function App() {
   const [data, setData] = useState(dataJSON);
 
+  if (!data) return <h1>Loading...</h1>;
+
   return (
     <>
       <header>

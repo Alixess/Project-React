@@ -48,5 +48,5 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 1px #cbd6ee;
+  box-shadow: 0 0 0 2px #64f8e1;
 }
