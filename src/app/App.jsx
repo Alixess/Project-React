@@ -19,11 +19,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route
             path="/game"
-            element={<Game SetData={setData} data={data} />}
+            element={<Game setData={setData} data={data} />}
           />
           <Route
             path="/table"
-            element={<Table SetData={setData} data={data} />}
+            element={<Table setData={setData} data={data} />}
           />
           <Route path="*" element={<Error />} />
         </Routes>

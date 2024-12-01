@@ -20,8 +20,8 @@
       font-size: 1.25rem;
       color: $main-textcolor;
       &:hover {
-        color: #646cff;
-        transition: inherit;
+        color: $decor-color;
+        transition: 0.3s ease-out;
       }
     }
   }
