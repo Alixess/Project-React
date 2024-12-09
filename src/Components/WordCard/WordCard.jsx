@@ -18,7 +18,9 @@ export default function WordCard({
   }, [id]);
 
   useEffect(() => {
-    buttonRef.current.focus();
+    if (buttonRef.current) {
+      buttonRef.current.focus();
+    }
   });
 
   function handleClick() {
