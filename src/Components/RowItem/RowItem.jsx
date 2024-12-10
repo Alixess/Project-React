@@ -20,6 +20,33 @@ export default function RowItem({
     setValueRussian(russian);
   }, [english, transcription, russian]);
 
+  const isFormValid = () => {
+    return (
+      valueEnglish.trim() !== "" &&
+      valueTranscription.trim() !== "" &&
+      valueRussian.trim() !== ""
+    );
+  };
+
+  const validateForm = () => {
+    let errors = [];
+
+    if (!/^[a-z\s\-]*$/i.test(valueEnglish)) {
+      errors.push("English field contains invalid characters");
+    }
+
+    if (!/^[а-я\s\,]*$/i.test(valueRussian)) {
+      errors.push("Russian field contains invalid characters");
+    }
+
+    if (errors.length > 0) {
+      alert(errors.join("\n"));
+      return false;
+    }
+
+    return true;
+  };
+
   return (
     <div className={style.container}>
       <div className={style.wrapper_contant}>
@@ -29,16 +56,19 @@ export default function RowItem({
               type="text"
               value={valueEnglish}
               onChange={(e) => setValueEnglish(e.target.value)}
+              className={valueEnglish.trim() === "" ? style.invalid : ""}
             />
             <input
               type="text"
               value={valueTranscription}
               onChange={(e) => setValueTranscription(e.target.value)}
+              className={valueTranscription.trim() === "" ? style.invalid : ""}
             />
             <input
               type="text"
               value={valueRussian}
               onChange={(e) => setValueRussian(e.target.value)}
+              className={valueRussian.trim() === "" ? style.invalid : ""}
             />
           </div>
         ) : (
@@ -59,14 +89,22 @@ export default function RowItem({
             <div>
               <button
                 onClick={() => {
-                  handleEdit(
-                    id,
-                    valueEnglish,
-                    valueTranscription,
-                    valueRussian
-                  );
-                  setEdit(false);
-                }}>
+                  if (isFormValid() && validateForm()) {
+                    console.log("Form data:", {
+                      english: valueEnglish,
+                      transcription: valueTranscription,
+                      russian: valueRussian,
+                    });
+                    handleEdit(
+                      id,
+                      valueEnglish,
+                      valueTranscription,
+                      valueRussian
+                    );
+                    setEdit(false);
+                  }
+                }}
+                disabled={!isFormValid()}>
                 Save
               </button>
               <button
