@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Words from "../../Components/Words/Words";
+
 import "./Home.scss";
 
 export default function Home() {
@@ -14,10 +16,13 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <input type="text" value={inputText} onChange={handleInputChange} />
-      <button onClick={handleButtonClick}>Submit</button>
-      <p style={{ color: "blue" }}>{formattedText}</p>
-    </div>
+    <>
+      <div>
+        <input type="text" value={inputText} onChange={handleInputChange} />
+        <button onClick={handleButtonClick}>Submit</button>
+        <p style={{ color: "blue" }}>{formattedText}</p>
+      </div>
+      <Words />
+    </>
   );
 }
