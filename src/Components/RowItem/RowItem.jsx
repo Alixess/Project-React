@@ -47,6 +47,18 @@ export default function RowItem({
     return true;
   };
 
+  const handleSave = () => {
+    if (isFormValid() && validateForm()) {
+      console.log("Form data:", {
+        english: valueEnglish,
+        transcription: valueTranscription,
+        russian: valueRussian,
+      });
+      handleEdit(id, valueEnglish, valueTranscription, valueRussian);
+      setEdit(false);
+    }
+  };
+
   return (
     <div className={style.container}>
       <div className={style.wrapper_contant}>
@@ -87,24 +99,7 @@ export default function RowItem({
             </div>
           ) : (
             <div>
-              <button
-                onClick={() => {
-                  if (isFormValid() && validateForm()) {
-                    console.log("Form data:", {
-                      english: valueEnglish,
-                      transcription: valueTranscription,
-                      russian: valueRussian,
-                    });
-                    handleEdit(
-                      id,
-                      valueEnglish,
-                      valueTranscription,
-                      valueRussian
-                    );
-                    setEdit(false);
-                  }
-                }}
-                disabled={!isFormValid()}>
+              <button onClick={handleSave} disabled={!isFormValid()}>
                 Save
               </button>
               <button
