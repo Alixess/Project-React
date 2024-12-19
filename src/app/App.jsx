@@ -1,14 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 import { Home, Game, Error, Table } from "../Pages";
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
-import dataJSON from "../data/data.json";
+import GET from "../Services/GET";
 
 function App() {
-  const [data, setData] = useState(dataJSON);
+  const [data, setData] = useState(false);
 
+  useEffect(() => {
+    getWordsServer();
+  }, []);
+
+  async function getWordsServer() {
+    const wordsServer = await GET.getWords();
+    setData(wordsServer);
+  }
   if (!data) return <h1>Loading...</h1>;
 
   return (
