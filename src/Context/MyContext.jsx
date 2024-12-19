@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import GET from "../Services/GET";
+import Loading from "../Components/Loading/Loading";
 
 export const myContext = createContext();
 export function MyContextComponent({ children }) {
@@ -16,7 +17,7 @@ export function MyContextComponent({ children }) {
   }
 
   if (!dataServer) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
 
   return <myContext.Provider value={value}>{children}</myContext.Provider>;
