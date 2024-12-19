@@ -1,24 +1,10 @@
-import { useEffect, useState } from "react";
 import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 import { Home, Game, Error, Table } from "../Pages";
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
-import GET from "../Services/GET";
 
 function App() {
-  const [data, setData] = useState(false);
-
-  useEffect(() => {
-    getWordsServer();
-  }, []);
-
-  async function getWordsServer() {
-    const wordsServer = await GET.getWords();
-    setData(wordsServer);
-  }
-  if (!data) return <h1>Loading...</h1>;
-
   return (
     <>
       <header>
@@ -27,14 +13,8 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/game"
-            element={<Game setData={setData} data={data} />}
-          />
-          <Route
-            path="/table"
-            element={<Table setData={setData} data={data} />}
-          />
+          <Route path="/game" element={<Game />} />
+          <Route path="/table" element={<Table />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </main>

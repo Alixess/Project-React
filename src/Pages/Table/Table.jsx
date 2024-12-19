@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import RowItem from "../../Components/RowItem/RowItem";
+import { myContext } from "../../Context/MyContext";
 import style from "./table.module.scss";
 
-export default function Table({ data, setData }) {
+export default function Table() {
+  const { setDataServer, dataServer } = useContext(myContext);
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    setDataServer(dataServer.filter((item) => item.id !== id));
   };
 
   const handleEdit = (id, english, transcription, russian) => {
-    setData(
-      data.map((item) => {
+    setDataServer(
+      dataServer.map((item) => {
         if (item.id === id) {
           item.english = english;
           item.transcription = transcription;
@@ -22,7 +24,7 @@ export default function Table({ data, setData }) {
 
   return (
     <div className={style.container}>
-      {data.map((item) => (
+      {dataServer.map((item) => (
         <RowItem
           {...item}
           key={item.id}

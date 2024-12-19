@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import WordCard from "../../Components/WordCard/WordCard";
+import { myContext } from "../../Context/MyContext";
 import style from "./game.module.scss";
 
-export default function Game({ data }) {
+export default function Game() {
+  const { setDataServer, dataServer } = useContext(myContext);
   const [active, setActive] = useState(0);
   const [counter, setCounter] = useState(0);
 
   function nextSlide() {
-    if (active === data.length - 1) {
+    if (active === dataServer.length - 1) {
       setActive(0);
       return;
     }
@@ -17,7 +19,7 @@ export default function Game({ data }) {
 
   function prevSlide() {
     if (active === 0) {
-      setActive(data.length - 1);
+      setActive(dataServer.length - 1);
       return;
     }
     setActive((prevActive) => prevActive - 1);
@@ -34,7 +36,7 @@ export default function Game({ data }) {
           <FiChevronLeft />
         </button>
         <div className="card">
-          <WordCard {...data[active]} editCounter={editCounter} />
+          <WordCard {...dataServer[active]} editCounter={editCounter} />
         </div>
         <button className={style.next} onClick={nextSlide}>
           <FiChevronRight />
