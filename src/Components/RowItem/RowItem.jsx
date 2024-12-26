@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import EDIT from "../../Services/EDIT";
 import style from "./rowitem.module.scss";
 
 export default function RowItem({
@@ -10,9 +11,9 @@ export default function RowItem({
   handleEdit,
 }) {
   const [edit, setEdit] = useState(false);
-  const [valueEnglish, setValueEnglish] = useState("");
-  const [valueTranscription, setValueTranscription] = useState("");
-  const [valueRussian, setValueRussian] = useState("");
+  const [valueEnglish, setValueEnglish] = useState(english);
+  const [valueTranscription, setValueTranscription] = useState(transcription);
+  const [valueRussian, setValueRussian] = useState(russian);
 
   useEffect(() => {
     setValueEnglish(english);
@@ -47,14 +48,15 @@ export default function RowItem({
     return true;
   };
 
-  const handleSave = () => {
+  const handleSave = async (e) => {
+    e.preventDefault();
     if (isFormValid() && validateForm()) {
       console.log("Form data:", {
         english: valueEnglish,
         transcription: valueTranscription,
         russian: valueRussian,
       });
-      handleEdit(id, valueEnglish, valueTranscription, valueRussian);
+      await handleEdit(id, valueEnglish, valueTranscription, valueRussian);
       setEdit(false);
     }
   };
