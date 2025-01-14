@@ -1,12 +1,9 @@
 class DELETE {
   static async deleteWords(id) {
     try {
-      const resp = await fetch(
-        `http://itgirlschool.justmakeit.ru/api/words/${id}/delete`,
-        {
-          method: "POST",
-        }
-      );
+      const resp = await fetch(`api/words/${id}/delete`, {
+        method: "POST",
+      });
       if (!resp.ok) {
         throw new Error("Failed to delete word");
       }
