@@ -1,13 +1,19 @@
 import React, { useState, useContext } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import WordCard from "../../Components/WordCard/WordCard";
-import { myContext } from "../../Context/MyContext";
+import { observer, inject } from "mobx-react";
+import wordsStore from "../../store/wordsStore";
 import style from "./game.module.scss";
 
 export default function Game() {
-  const { setDataServer, dataServer } = useContext(myContext);
+  const words = wordsStore.words;
   const [active, setActive] = useState(0);
   const [counter, setCounter] = useState(0);
+
+  if (!words || words.length === 0) {
+    console.log(wordsStore);
+    return <div>Упс! Слов нет!</div>;
+  }
 
   function nextSlide() {
     if (active === dataServer.length - 1) {
@@ -36,7 +42,7 @@ export default function Game() {
           <FiChevronLeft />
         </button>
         <div className="card">
-          <WordCard {...dataServer[active]} editCounter={editCounter} />
+          <WordCard {...words[active]} editCounter={editCounter} />
         </div>
         <button className={style.next} onClick={nextSlide}>
           <FiChevronRight />

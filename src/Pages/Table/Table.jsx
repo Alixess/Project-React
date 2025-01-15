@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import RowItem from "../../Components/RowItem/RowItem";
-import { myContext } from "../../Context/MyContext";
+//import { MobXProvider } from "../../store/store.jsx";
+import { observer } from "mobx-react";
+import wordsStore from "../../store/wordsStore";
 import style from "./table.module.scss";
 
 export default function Table() {
-  const {
+  /*const {
     setDataServer,
     dataServer,
     postWordsServer,
@@ -99,5 +101,5 @@ export default function Table() {
         />
       ))}
     </div>
-  );
+  );*/
 }
