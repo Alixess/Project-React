@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import RowItem from "../../Components/RowItem/RowItem";
 import { observer } from "mobx-react-lite";
 import wordsStore from "../../store/wordsStore";
@@ -11,11 +11,26 @@ const Table = observer(() => {
     russian: "",
   });
 
+  useEffect(() => {
+    const loadingWords = async () => {
+      try {
+        await wordsStore.getWordsServer();
+      } catch (error) {
+        console.error("Error loading words:", error);
+      }
+    };
+
+    loadingWords();
+  }, []);
+
+  const englishInputRef = useRef(null);
+
   const handleAddWord = async () => {
     const newWordWithId = await wordsStore.postWordsServer(newWord);
     if (newWordWithId) {
       wordsStore.getWordsServer();
       setNewWord({ english: "", transcription: "", russian: "" });
+      englishInputRef.current.focus();
     }
   };
 
@@ -50,6 +65,7 @@ const Table = observer(() => {
         value={newWord.english}
         onChange={(e) => setNewWord({ ...newWord, english: e.target.value })}
         placeholder="English"
+        ref={englishInputRef}
       />
       <input
         type="text"

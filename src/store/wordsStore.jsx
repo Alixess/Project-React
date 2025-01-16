@@ -10,21 +10,25 @@ class WordsStore {
       postWordsServer: action,
       editWordsServer: action,
       deleteWordsServer: action,
+      setWords: action,
     });
   }
 
   getWordsServer = async () => {
     const response = await fetch("api/words");
+    if (!response.ok) {
+      throw new Error("Something went wrong");
+    }
     const data = await response.json();
     this.setWords(data);
   };
 
-  setWords = action((wordsArray) => {
+  setWords = (wordsArray) => {
     this.words = wordsArray;
-  });
+  };
 
   postWordsServer = async (newWord) => {
-    const response = await fetch("api/word/add", {
+    const response = await fetch("api/words/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,16 +36,24 @@ class WordsStore {
       body: JSON.stringify(newWord),
     });
     const data = await response.json();
-    this.words.push(data);
+    this.setWords([...this.words, data]);
   };
 
   editWordsServer = async (updatedWord) => {
+    const { id, english, transcription, russian } = updatedWord;
     const response = await fetch(`api/words/${id}/update`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(updatedWord),
+      body: JSON.stringify({
+        id,
+        english: english,
+        transcription: transcription,
+        russian: russian,
+        tags: "",
+        tags_json: "[]",
+      }),
     });
     const data = await response.json();
     this.setWords(
