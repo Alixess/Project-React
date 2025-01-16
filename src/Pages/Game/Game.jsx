@@ -1,22 +1,31 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import WordCard from "../../Components/WordCard/WordCard";
 import { observer, inject } from "mobx-react";
 import wordsStore from "../../store/wordsStore";
 import style from "./game.module.scss";
 
-export default function Game() {
-  const words = wordsStore.words;
+const Game = observer(() => {
   const [active, setActive] = useState(0);
   const [counter, setCounter] = useState(0);
 
+  // Fetch words when the component mounts
+  useEffect(() => {
+    const fetchWords = async () => {
+      await wordsStore.getWordsServer();
+    };
+
+    fetchWords();
+  }, []);
+
+  const words = wordsStore.words; // Retrieve updated words array
+
   if (!words || words.length === 0) {
-    console.log(wordsStore);
     return <div>Упс! Слов нет!</div>;
   }
 
   function nextSlide() {
-    if (active === dataServer.length - 1) {
+    if (active === words.length - 1) {
       setActive(0);
       return;
     }
@@ -25,7 +34,7 @@ export default function Game() {
 
   function prevSlide() {
     if (active === 0) {
-      setActive(dataServer.length - 1);
+      setActive(words.length - 1);
       return;
     }
     setActive((prevActive) => prevActive - 1);
@@ -51,4 +60,6 @@ export default function Game() {
       <div className={style.counter}>Изучено слов: {counter}</div>
     </>
   );
-}
+});
+
+export default Game;

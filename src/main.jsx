@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./style/index.css";
 import { Provider } from "mobx-react";
 import wordsStore from "./store/wordsStore";
+//import { MobXProvider } from "./store/store.jsx";
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>

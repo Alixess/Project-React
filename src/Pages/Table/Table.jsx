@@ -1,51 +1,36 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import RowItem from "../../Components/RowItem/RowItem";
-//import { MobXProvider } from "../../store/store.jsx";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react-lite";
 import wordsStore from "../../store/wordsStore";
 import style from "./table.module.scss";
 
-export default function Table() {
-  /*const {
-    setDataServer,
-    dataServer,
-    postWordsServer,
-    deleteWordsServer,
-    editWordsServer,
-  } = useContext(myContext);
-
+const Table = observer(() => {
   const [newWord, setNewWord] = useState({
     english: "",
     transcription: "",
     russian: "",
-    id: "",
-    tags: "",
-    tags_json: "",
   });
 
   const handleAddWord = async () => {
-    const newWordWithId = await postWordsServer(newWord);
+    const newWordWithId = await wordsStore.postWordsServer(newWord);
     if (newWordWithId) {
-      setDataServer((prevData) => [...prevData, newWordWithId]);
+      wordsStore.getWordsServer();
       setNewWord({ english: "", transcription: "", russian: "" });
     }
   };
 
   const handleDelete = async (id) => {
-    const deletedWord = await deleteWordsServer(id);
-    if (id) {
-      setDataServer(() => [...dataServer.filter((word) => word.id !== id)]);
-    }
+    await wordsStore.deleteWordsServer(id);
+    wordsStore.getWordsServer();
   };
 
   const handleEdit = async (id, english, transcription, russian) => {
-    const editWordResponse = await editWordsServer(
+    const editWordResponse = await wordsStore.editWordsServer({
       id,
       english,
       transcription,
-      russian
-    );
-    console.log(editWordResponse);
+      russian,
+    });
 
     if (editWordResponse && editWordResponse.status === "Error") {
       console.error("Error updating word:", editWordResponse.errors);
@@ -54,18 +39,7 @@ export default function Table() {
           editWordResponse.errors.map((err) => err.message).join(", ")
       );
     } else {
-      setDataServer(
-        dataServer.map((item) => {
-          if (item.id === id) {
-            item.english = english;
-            item.transcription = transcription;
-            item.russian = russian;
-          }
-          console.log(item);
-          return item;
-        })
-      );
-      console.log(dataServer);
+      wordsStore.getWordsServer();
     }
   };
 
@@ -92,7 +66,7 @@ export default function Table() {
         placeholder="Russian"
       />
       <button onClick={handleAddWord}>Add Word</button>
-      {dataServer.map((item) => (
+      {wordsStore.words.map((item) => (
         <RowItem
           {...item}
           key={item.id}
@@ -101,5 +75,7 @@ export default function Table() {
         />
       ))}
     </div>
-  );*/
-}
+  );
+});
+
+export default Table;
